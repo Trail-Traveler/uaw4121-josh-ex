@@ -6,7 +6,7 @@ exports.validate_last_name = [
     .escape()
     .not()
     .isEmpty()
-    .withMessage("User name can not be empty!"),
+    .withMessage("Last name can not be empty!"),
 
   (req, res, next) => {
     const errors = validationResult(req);
