@@ -2,12 +2,14 @@ const { db } = require("../util/database");
 
 exports.getEmployees = (req, res) => {
   const last_name = req.body.last_name;
-  console.log(last_name);
-  db.any("select * from employees.employee where last_name = $1", [last_name])
+  // db.any("select * from employees.employee limit 10000")
+  db.any(
+    "SELECT id, birth_date, first_name, last_name, gender, hire_date FROM employees.employee WHERE last_name = $1",
+    [last_name]
+  )
     .then((data) => res.json({ users: data, error: false }))
     .catch((err) => {
-      console.log(err);
-      res.status(400);
+      // res.status(500);
       res.json({ error: true, message: err.code });
     });
 };

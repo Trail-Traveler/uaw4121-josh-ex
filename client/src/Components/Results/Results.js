@@ -11,7 +11,7 @@ const Results = (props) => {
   if (isLoading) {
     message = <Loading />;
   } else if (error) {
-    message = <Error />;
+    message = <Error error={error} />;
   } else if (0 === data.length) {
     message = <NoResult />;
   } else if (!(0 === data.length)) {

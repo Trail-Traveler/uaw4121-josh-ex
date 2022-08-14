@@ -25,7 +25,7 @@ const httpReducer = (prevState, action) => {
     case "CLEAR":
       return initialState;
     case "ERROR":
-      return { loading: false, error: action.errorMessage };
+      return { ...prevState, loading: false, error: action.errorMessage };
     default:
       throw new Error("How did you get here?");
   }
@@ -59,8 +59,10 @@ const useHttp = () => {
         }
       })
       .catch((e) => {
-        dispatchHttp({ type: "ERROR", errorMessage: e.message });
-        console.log(e);
+        dispatchHttp({
+          type: "ERROR",
+          errorMessage: e.message,
+        });
       });
   }, []);
   return {
