@@ -1,7 +1,7 @@
 import { useCallback, useRef } from "react";
 import Results from "./Components/Results/Results";
 import SearchForm from "./Components/Search/SearchForm";
-import Section from "./Components/Section/Section";
+import CardSection from "./Components/CardSection/CardSection";
 import useHttp from "./hooks/useHttp";
 
 const App = () => {
@@ -19,21 +19,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <Section title="Search">
+      <CardSection title="Search">
         <SearchForm
           ref={searchRef}
           onSearchClick={onSearchClick}
           isLoading={isLoading}
         />
-      </Section>
-      <Section title="Results">
+      </CardSection>
+      <CardSection title="Results">
         <Results
           data={data}
           isLoading={isLoading}
           error={error}
           searchTerm={searchRef.current?.value}
         />
-      </Section>
+      </CardSection>
     </div>
   );
 };

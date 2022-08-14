@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import classes from "./Section.module.css";
 
-const Section = (props) => {
+const CardSection = (props) => {
   return (
     <Card className={classes.card}>
       <Card.Header>{props.title}</Card.Header>
@@ -10,4 +10,4 @@ const Section = (props) => {
   );
 };
 
-export default Section;
+export default CardSection;
