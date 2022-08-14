@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Employee from "./Employee";
+import styles from "./EmployeeList.module.css";
+import EmployeeListHeader from "./EmployeeListHeader";
 
 const EmployeeList = (props) => {
   const [users, setUsers] = useState([]);
@@ -8,7 +10,13 @@ const EmployeeList = (props) => {
     const items = data.map((user) => <Employee key={user.id} user={user} />);
     setUsers(items);
   }, [data, setUsers]);
-  return <ul>{users}</ul>;
+
+  return (
+    <div className={styles.list}>
+      <EmployeeListHeader />
+      {users}
+    </div>
+  );
 };
 
 export default EmployeeList;
