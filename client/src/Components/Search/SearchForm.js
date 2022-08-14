@@ -11,12 +11,12 @@ const SearchForm = forwardRef((props, ref) => {
   return (
     <Form>
       <FormGroup>
-        <FormLabel className="flex-center">Enter Last name</FormLabel>
+        <FormLabel className="flex-center">Enter last name</FormLabel>
         <FormControl type="text" ref={ref} />
       </FormGroup>
       <div className="text-center">
         <Button
-          onClick={props.searchClick}
+          onClick={props.onSearchClick}
           variant="primary"
           type="submit"
           className="custom-btn"

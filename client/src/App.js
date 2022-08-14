@@ -1,46 +1,41 @@
-// client/src/App.js
-
-import React, { useRef } from "react";
-import { Button } from "react-bootstrap";
-import "./App.css";
+import { useCallback, useRef } from "react";
+import Results from "./Components/Results/Results";
 import SearchForm from "./Components/Search/SearchForm";
 import Section from "./Components/Section/Section";
+import useHttp from "./hooks/useHttp";
 
-function App() {
-  const [data, setData] = React.useState(null);
+const App = () => {
+  const { data, isLoading, error, sendRequest, clear } = useHttp();
   const searchRef = useRef();
-  const searchClick = () => {
-    fetch("/api", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ last_name: searchRef.current.value }),
-    })
-      .then((res) => res.json())
-      .then((data) => setData(data.users));
-  };
+  const onSearchClick = useCallback(
+    (e) => {
+      clear();
+      e.preventDefault();
+      const val = searchRef.current.value;
+      sendRequest("/api", { last_name: val }, "");
+    },
+    [sendRequest, clear]
+  );
 
   return (
     <div className="App">
       <Section title="Search">
-        <SearchForm ref={searchRef} onClick={searchClick} />
+        <SearchForm
+          ref={searchRef}
+          onSearchClick={onSearchClick}
+          isLoading={isLoading}
+        />
       </Section>
       <Section title="Results">
-        <header className="App-header">
-          <p>
-            {!data
-              ? "Loading..."
-              : data.map((a) => (
-                  <li key={a.id}>
-                    {a.first_name} {a.last_name}
-                  </li>
-                ))}
-          </p>
-        </header>
+        <Results
+          data={data}
+          isLoading={isLoading}
+          error={error}
+          searchTerm={searchRef.current?.value}
+        />
       </Section>
     </div>
   );
-}
+};
 
 export default App;
