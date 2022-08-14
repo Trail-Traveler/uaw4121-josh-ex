@@ -1,9 +1,9 @@
 import { Alert } from "react-bootstrap";
 
-const NoResult = () => {
+const NoResult = ({ searchTerm }) => {
   return (
     <Alert variant="warning" className="flex-center">
-      No results
+      No results for {searchTerm}
     </Alert>
   );
 };

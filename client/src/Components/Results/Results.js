@@ -13,7 +13,7 @@ const Results = (props) => {
   } else if (error) {
     message = <Error error={error} />;
   } else if (0 === data.length) {
-    message = <NoResult />;
+    message = <NoResult searchTerm={searchTerm} />;
   } else if (!(0 === data.length)) {
     message = (
       <>
