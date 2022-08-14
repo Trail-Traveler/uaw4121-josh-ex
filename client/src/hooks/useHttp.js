@@ -50,7 +50,10 @@ const useHttp = () => {
       })
       .then((responseData) => {
         if (responseData.error) {
-          dispatchHttp({ type: "ERROR", errorMessage: responseData.message });
+          dispatchHttp({
+            type: "ERROR",
+            errorMessage: responseData.message || "Server Error",
+          });
         } else {
           dispatchHttp({
             type: "RESPONSE",
