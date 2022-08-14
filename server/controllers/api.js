@@ -1,5 +1,4 @@
 const { db } = require("../util/database");
-
 exports.getEmployees = (req, res) => {
   const last_name = req.body.last_name;
   // db.any("select * from employees.employee limit 10000")
@@ -10,6 +9,7 @@ exports.getEmployees = (req, res) => {
     .then((data) => res.json({ users: data, error: false }))
     .catch((err) => {
       // res.status(500);
+      console.log(err);
       res.json({ error: true, message: err.code });
     });
 };
