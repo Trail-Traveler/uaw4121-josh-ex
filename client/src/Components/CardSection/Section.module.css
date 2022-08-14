@@ -1,7 +1,12 @@
 .card {
   width: 50%;
   border-radius: 15px;
-  margin: 15px auto;
+
   background-color: rgb(188, 188, 188);
   border-color: #0d6efd !important;
+}
+
+.col-center {
+  padding: 5px 15px 0;
+  margin: 15px auto;
 }
