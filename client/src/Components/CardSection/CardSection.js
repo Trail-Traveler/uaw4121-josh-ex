@@ -6,7 +6,7 @@ const CardSection = (props) => {
     <div
       className={`${classes["col-center"]} col-lg-8 col-md-10 col-xxs-11 text-center`}
     >
-      <Card>
+      <Card className={classes.card}>
         <Card.Header>{props.title}</Card.Header>
         <Card.Body>{props.children}</Card.Body>
       </Card>
