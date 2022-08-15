@@ -2,7 +2,10 @@ import styles from "./Employee.module.css";
 const EmployeeListHeader = () => {
   const headerFields = [
     "Id",
-    "Last name, First name",
+    <>
+      <span>Last name, </span>
+      <span className="text-nowrap">First name</span>
+    </>,
     "Gender",
     "Birth date",
     "Hire date",

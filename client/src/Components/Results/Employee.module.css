@@ -18,12 +18,13 @@ div .item.header {
 }
 
 .item span:nth-child(1) {
-  justify-self: start;
-  align-self: start;
+  /* justify-self: start; */
+  align-self: center;
 }
 
 .item span {
   grid-column: span 2;
+  align-self: center;
 }
 
 .item span:nth-child(4),
@@ -31,6 +32,14 @@ div .item.header {
   grid-column: span 3;
   justify-self: center;
   align-self: center;
+  display: none;
+}
+
+@media (min-width: 450px) {
+  .item span:nth-child(4),
+  .item span:nth-child(5) {
+    display: inline;
+  }
 }
 
 @media (min-width: 768px) {
@@ -42,6 +51,6 @@ div .item.header {
   .item span:nth-child(5) {
     /* grid-column: span 1; */
     justify-self: center;
-    align-self: center;
+    /* align-self: center; */
   }
 }
